@@ -1,22 +1,29 @@
 import numpy as np 
 
-#creating random array with numpy
+#broadcasting 
 
-# This is eg of rand() this generator only positive number
-a = np.random.rand(5)
-print(a) # this will create a random array between the value of 0 and 1 and this array will of 5 values in it and its a 1 d array 
+a = np.array([1,2,3])
+b = np.array([5])
 
-b = np.random.rand(3,5)
-print(b) # this is the 2 d array !!!
+print(a+b) # in this numpy automatically make 3 element in b of 5 means 1+5,2+5,3+5 that it
 
-#randn() this genrator number close to 0 but they can be negative and positive also 
-c = np.random.randn(2,5)
-print(c)
+#imp note 
+# in the numpy broadcastinng array are only compatiabel when they have same as them or they have one 
+# eg 1st array dimneisonal are [3,2]
+# 2st array dimneisonal can be like this [1,2] or [3,1] or [3,2] or [1,1]
+#above you can see the rule of compatible that we should have a same number or 1 and also 1 is compatible with any numbner 
 
-#ranf() this will generate the random float values 
-d = np.random.ranf((2,4))
-print(d)
+#example 
 
-#randint for the integer values 
-d1 = np.random.randint(0,100,(2,10))
-print(d1)
+a1 = np.array([1,2]) #(1,2) this will be 
+a2 = np.array([[2],[3]]) #(2,1)
+
+#how this work ?
+# 1st array is 1 D and other is 2 D 
+#we can see that in the 2nd array the 0 index element have two elemnts so because of this 1st array we become twice menas like this :-
+# [[1,2],[1,2]]
+# so this complete the process and then 2nd array 1st index have 1 elment only and 1st array have 2 elments so this make the 2nd array like this :-
+# [[2,2],[3,3]]
+#now the addition will be like this:- 1+2,2+2,1+3,2+3 and final is :- [[3,4],[4,5]]
+
+print(a1 + a2)
