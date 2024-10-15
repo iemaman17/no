@@ -1,41 +1,28 @@
 import numpy as np
 import numpy.ma as ma
 
+# vectorization 
 
-# view and copy 
+a = np.arange(1,13).reshape(4,3)
+print(a)
 
-a = np.full((3,3),9)
-b = a[0:1]
+def remove_even(x):
+    if x % 2 == 0:
+        return 0
+    else:
+        return x
+    
+b= np.vectorize(remove_even)
+print(b(a))   
 
-print(b)
+#custom data types 
 
-b[0,1] = 3
-print(b)
-print(a)# this is view and this both array a and b are refering at the same address therefore b make change to the a array 
+# in this we can make our owen data types like this :-
 
-#we can copy method 
+sif = np.dtype("U10, i4,f8")
 
-a1 = np.full((2,2),5)
-b1 = a1.copy()
+new = np.array([("aman",24,4564.878),("noa",59,46.2),("sangwan",5,9.64),("ram",98,459.21)], dtype = sif)
 
-print(b1)
-b1[0,1]= 10
-print(b1)
-print(a1) # we can see that both are the different and b1 didnt make any changes like above one !!!
-
-# we can other method like this 
-
-a2 = np.arange(12).reshape(4,3)
-
-b2 = a2[[0,1]]
-
-print(b2)
-b2[1,2] = 10
-print(b2)
-print(a2) # in this method we use the list inthe indexing 
-
-
-
-
-
-
+print(new)
+print(new.nbytes)
+print(new.dtype)
