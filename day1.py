@@ -1,31 +1,21 @@
 import numpy as np
+import numpy.ma as ma
+# masking 
 
-#searching and iterating over the array 
+a = np.array([1,2,3,np.nan,np.inf])
 
-#searching 
+b = ma.array(a,mask=[0,0,0,1,1])
+print(b.mean())
 
-a = np.array([2,4,3,8,0.1,38,5,1,0,9,6,88,76,0.1])
+print(b)
 
-print(np.argmax(a)) # this give the index of max value 
-print(a.max()) # this give the max value 
 
-print(np.argmin(a)) # min value index 
-print(a.min()) #min value 
 
-print(np.nonzero(a)) # give the index of value who are non zero  
+#this is called masking 
 
-# iteraing 
 
-a1 = np.arange(9).reshape(3,3)
-print(a1)
-
-for items in np.nditer(a1,order="C"):
-    print(items, end=" ")#this is iteraing vertically 
-print()
-
-for items in np.nditer(a1,order="F"):
-    print(items, end=" ")
-
+c = np.arange(21)
+print(ma.masked_where(c%2==0,c)) 
 
 
 
